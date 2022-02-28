@@ -1,0 +1,22 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/firmware.elf",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [
+                "interface/stlink.cfg",
+                // "board/st_nucleo_f3.cfg" // 在"OpenOCD根目录/share/openocd/scripts"下寻找适用于当前芯片的配置文件
+            ],
+            "gdbPath": "arm-none-eabi-gdb",
+            // "svdFile": "STM32F303.svd" // 在ST官网下载芯片的svd文件放入工作空间根目录
+        }
+    ]
+}
