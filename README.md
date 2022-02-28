@@ -5,9 +5,9 @@
 ## 工具链准备
 
 本模板默认使用以下工具：
-1. [gcc-arm-none-eabi](developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)：编译器
-2. [CMake](cmake.org/download/)、[Ninja](ninja-build.org)：构建工具
-3. [OpenOCD](openocd.org/pages/getting-openocd.html)：烧录器、调试器
+1. [gcc-arm-none-eabi](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads)：编译器
+2. [CMake](https://cmake.org/download/)、[Ninja](https://ninja-build.org)：构建工具
+3. [OpenOCD](https://openocd.org/pages/getting-openocd.html)：烧录器、调试器
 
 点击上述各个链接即可跳转至其下载页面；如果使用Linux系统请自行搜索选择安装方法。
 
