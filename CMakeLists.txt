@@ -30,24 +30,33 @@ set(SOURCES ${STARTUP_SRC} ${CORE_SRCS} ${HAL_DRIVERS_SRCS})
 # # # # # # # # # #
 
 # MCU相关选项
-set(MCU_FLAGS -mthumb -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard)
+# add_compile_options(-mcpu=cortex-m4 -mthumb)
+# add_link_options(-mcpu=cortex-m4 -mthumb)
+
+# FPU相关选项
+# add_compile_definitions(ARM_MATH_CM4 ARM_MATH_MATRIX_CHECK ARM_MATH_ROUNDING)
+# add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+# add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 
 # Warnings相关选项
-set(WARNING_FLAGS -Wall -Wextra -Wpedantic -Wno-unused-parameter)
+add_compile_options(-Wall -Wextra -Wpedantic -Wno-unused-parameter)
 
 # 全局宏定义
-# set(DEFINITIONS -DUSE_HAL_DRIVER -DSTM32F303x8)
+# add_compile_definitions(USE_HAL_DRIVER STM32F303x8)
 
-# 生成编译链接选项
-set(COMPILE_FLAGS
-    ${MCU_FLAGS} ${WARNING_FLAGS}
-    -nostdlib  -fdata-sections -ffunction-sections
-)
-set(LINK_FLAGS
-    ${MCU_FLAGS} -T${LD_SCRIPT}
-    -lc -lm -lnosys -Wl,--gc-sections
-    -Wl,--print-memory-usage
-)
+# 分区选项
+add_compile_options(-ffunction-sections -fdata-sections -fno-common)
+add_link_options(-Wl,-gc-sections)
+
+# 输出选项
+add_compile_options(-fmessage-length=0)
+add_link_options(-Wl,--print-memory-usage)
+
+# 指定链接文件
+add_link_options(-T ${LD_SCRIPT})
+
+# 包含头文件
+include_directories(${INCLUDE_DIRECTORIES})
 
 
 # # # # # # # # # #
@@ -58,11 +67,7 @@ set(LINK_FLAGS
 set(TARGET firmware)
 
 # 添加目标及其相关配置
-add_executable(${TARGET} ${SOURCES})
-target_include_directories(${TARGET} PRIVATE ${INCLUDE_DIRECTORIES})
-target_compile_definitions(${TARGET} PRIVATE ${DEFINITIONS})
-target_compile_options(${TARGET} PRIVATE ${COMPILE_FLAGS})
-target_link_options(${TARGET} PRIVATE ${LINK_FLAGS})
+add_executable(${TARGET} ${SOURCES} ${LD_SCRIPT})
 
 # 生成纯二进制文件
 add_custom_command(

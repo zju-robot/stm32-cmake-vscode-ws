@@ -31,7 +31,7 @@ openocd -v
 ## 使用方法
 
 1. 修改CMakeLists.txt中源文件、头文件路径以及链接文件和启动文件
-2. 修改CMakeLists.txt中全局宏定义
+2. 按照所使用的芯片型号和库，修改CMakeLists.txt中MCU选项、FPU选项和全局宏定义、
 3. 修改.vscode/launch.json中OpenOCD的配置文件
 4. 在ST官网上下载对应芯片型号的svd文件，并修改.vscode/launch.json中的svd文件名
 
