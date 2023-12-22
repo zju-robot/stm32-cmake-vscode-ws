@@ -33,7 +33,7 @@ set(SOURCES ${STARTUP_SRC} ${CORE_SRCS} ${HAL_DRIVERS_SRCS})
 # add_compile_options(-mcpu=cortex-m4 -mthumb)
 # add_link_options(-mcpu=cortex-m4 -mthumb)
 
-# FPU相关选项
+# FPU相关选项 (optional)
 # add_compile_definitions(ARM_MATH_CM4 ARM_MATH_MATRIX_CHECK ARM_MATH_ROUNDING)
 # add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 # add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
